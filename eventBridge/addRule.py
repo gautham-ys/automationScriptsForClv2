@@ -6,10 +6,11 @@ import logging
 
 def addRule(account_id):
     '''add rule to eventbridge for each task-def per account in list'''
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
-    logger.addHandler(logging.StreamHandler(stream=sys.stdout))
-    logger.info(f'Adding rule for account {account_id}')
+    # logger = logging.getLogger()
+    # logger.setLevel(logging.INFO)
+    # logger.addHandler(logging.StreamHandler(stream=sys.stdout))
+    # logger.info(f'Adding rule for account {account_id}')
+    print((f'Adding rule for account {account_id}'))
 
     client = boto3.client('events')
     response = client.put_rule(

@@ -13,13 +13,14 @@ def addTarget(account_id):
         response = client.put_targets(
             Rule=f'clv2_{account_id}',
             Targets=[{
-                'Arn': f'arn:aws:ecs:us-east-1:612488371952:cluster/clv2_{account_id}',
+                'Arn': f'arn:aws:ecs:us-east-1:612488371952:cluster/clv2test',
                 'Id': account_id,
                 'RoleArn': 'arn:aws:iam::612488371952:role/ECS-runallTasks-Clv2testcluster',
                     'EcsParameters': {
-                        'TaskDefinitionArn': 'arn:aws:ecs:us-east-1:612488371952:task-definition/clv2_006467794258',
+                        'TaskDefinitionArn': f'arn:aws:ecs:us-east-1:612488371952:task-definition/clv2_{account_id}',
                         'TaskCount': 1,
                         'LaunchType': 'FARGATE',
+                        'EnableECSManagedTags': True
                         'NetworkConfiguration': {
                             'awsvpcConfiguration': {
                                 'Subnets': [
