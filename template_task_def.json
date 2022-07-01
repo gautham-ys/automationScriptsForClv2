@@ -1,0 +1,98 @@
+{
+    "ipcMode": null,
+    "executionRoleArn": "arn:aws:iam::612488371952:role/ecsTaskRole",
+    "containerDefinitions": [
+      {
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/clv2withLogging/612488371952",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "portMappings": [],
+        "command": [
+          "612488371952"
+        ],
+        "memory": 512,
+        "cpu": 0,
+        "environment": [],
+        "mountPoints": [],
+        "volumesFrom": [],
+        "image": "612488371952.dkr.ecr.us-east-1.amazonaws.com/test:latest",
+        "name": "clv2_612488371952"
+      }
+    ],
+    "placementConstraints": [],
+    "memory": 512,
+    "taskRoleArn": "arn:aws:iam::612488371952:role/ecsTaskRole",
+    "compatibilities": [
+      "EC2",
+      "FARGATE"
+    ],
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:612488371952:task-definition/clv2_612488371952:2",
+    "family": "clv2_612488371952",
+    "requiresAttributes": [
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+      },
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "ecs.capability.execution-role-awslogs"
+      },
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "com.amazonaws.ecs.capability.ecr-auth"
+      },
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+      },
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "com.amazonaws.ecs.capability.task-iam-role"
+      },
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "ecs.capability.execution-role-ecr-pull"
+      },
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+      },
+      {
+        "targetId": null,
+        "targetType": null,
+        "value": null,
+        "name": "ecs.capability.task-eni"
+      }
+    ],
+    "pidMode": null,
+    "requiresCompatibilities": [
+      "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "runtimePlatform": {
+      "operatingSystemFamily": "LINUX"
+    },
+    "cpu": "256",
+    "revision": 2,
+    "status": "ACTIVE",
+    "volumes": []
+}

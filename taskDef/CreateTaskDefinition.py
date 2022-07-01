@@ -14,13 +14,13 @@ def create_clv2_task_definition(account_id, memory='512', cpu='512'):
 
     # set the account id in the log group and container name and command
     container_name = f'clv2_{account_id}'
-    aws_logs_group = f'/ecs/clv2withLogging/{account_id}'
+    aws_logs_group = f'/ecs/clv2/{account_id}'
     template_task_def['containerDefinitions'][0]['command'][0] = account_id
     template_task_def['containerDefinitions'][0]['name'] = container_name
     template_task_def['containerDefinitions'][0]['logConfiguration']['options']['awslogs-group'] = aws_logs_group
 
     # custom memory
-    template_task_def['containerDefinitions'][0]['memory'] = memory
+    template_task_def['containerDefinitions'][0]['memory'] = int(memory)
 
     # main
     client = boto3.client('ecs')

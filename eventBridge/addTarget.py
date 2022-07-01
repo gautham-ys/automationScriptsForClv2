@@ -7,6 +7,12 @@ import sys
 
 def addTarget(account_id):
     '''add target to existing rule in eventbridge'''
+    #
+    #   prod subnets:   subnet-0961890eb6e230b76
+    #                    
+    #   security groups:  sg-04f0cdaa03c7a56e6 (shash01)     
+    #
+
     logger = logging.getLogger()
     try:
         client = boto3.client('events')
@@ -16,24 +22,24 @@ def addTarget(account_id):
                 'Arn': f'arn:aws:ecs:us-east-1:612488371952:cluster/clv2test',
                 'Id': account_id,
                 'RoleArn': 'arn:aws:iam::612488371952:role/ECS-runallTasks-Clv2testcluster',
-                    'EcsParameters': {
-                        'TaskDefinitionArn': f'arn:aws:ecs:us-east-1:612488371952:task-definition/clv2_{account_id}',
-                        'TaskCount': 1,
-                        'LaunchType': 'FARGATE',
-                        'EnableECSManagedTags': True
-                        'NetworkConfiguration': {
-                            'awsvpcConfiguration': {
-                                'Subnets': [
-                                    'subnet-0961890eb6e230b76',
-                                ],
-                                'SecurityGroups': [
-                                    'sg-04f0cdaa03c7a56e6',
-                                ],
-                                'AssignPublicIp': 'DISABLED'
-                            }
+                'EcsParameters': {
+                    'TaskDefinitionArn': f'arn:aws:ecs:us-east-1:612488371952:task-definition/clv2_{account_id}',
+                    'TaskCount': 1,
+                    'LaunchType': 'FARGATE',
+                    'EnableECSManagedTags': True
+                    'NetworkConfiguration': {
+                        'awsvpcConfiguration': {
+                            'Subnets': [    # prod subnets
+                                'subnet-0961890eb6e230b76',
+                            ],
+                            'SecurityGroups': [
+                                'sg-04f0cdaa03c7a56e6', #shash01
+                            ],
+                            'AssignPublicIp': 'DISABLED'
                         }
                     }
-                }]
+                }
+            }]
         )
         return response
 
